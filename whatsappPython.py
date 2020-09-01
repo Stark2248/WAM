@@ -13,11 +13,12 @@ driver.get("https://web.whatsapp.com/")
 # time.sleep()
 wait = WebDriverWait(driver, 600)
 # Replace 'My Bsnl' with the name of your friend or group name
-target = '"Icecream Premis"'
+group=sys.argv[2]
+target = '+group+'
 
 # Replace the below string with your own message
 string = sys.argv[1]
-
+n=sys.argv[3]
 x_arg = '//span[contains(@title,' + target + ')]'
 group_title = wait.until(EC.presence_of_element_located((
 By.XPATH, x_arg)))
@@ -25,7 +26,7 @@ print (group_title)
 print ("Wait for few seconds")
 group_title.click()
 message = driver.find_elements_by_xpath('//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')[0]
-for i in range(0,15000):
+for i in range(0,n):
     message.send_keys(string)
     sendbutton = driver.find_elements_by_xpath('//*[@id="main"]/footer/div[1]/div[3]/button')[0]
     sendbutton.click()
